@@ -111,6 +111,82 @@ x + y
 
 # Vector Arithmetic and Logical Operations -------------------------------------
 
+# R is functional language, even + is function
+
+2 + 3
+
+# is same as
+
+"+"(2,3)
+
+# scalars are vectors, more general
+
+x <- c(1, 2, 4)
+
+x + c(5, 0 , -1)
+
+x * c(5, 0 , -1)
+
+x <- c(1, 2, 4)
+
+x / c(5, 4, -1)
+
+x <- c(1, 2, 4)
+
+x %% c(5, 4, -1)
+
+
+# Indexing vectors -------------------------------------------------------------
+
+# format for indexing is vector1[vector2]
+
+y <- c(1.2, 3.9, 0.4, 0.12)
+
+y[c(1,3)]
+
+y[2:3]
+
+v <- 3;4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
