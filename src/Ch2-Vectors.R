@@ -146,7 +146,123 @@ y[c(1,3)]
 
 y[2:3]
 
-v <- 3;4
+v <- 3:4
+
+y[v]
+
+# more examples
+
+x <- c(4, 2, 17, 5)
+
+y <- x[c(1, 1, 3)] # repeats allowed
+
+y
+
+z <- c(5, 12, 13)
+
+z[-1] # negative index means exclude
+ 
+z[-1:-2]
+
+z[1:(length(z)-1)] # every element of z except last 
+
+z[-length(z)] # same as above
+
+# Generating useful vectors with the : operator --------------------------------
+
+5:8
+
+5:1
+
+# loop context
+
+x <- 5
+i <- 1
+
+for(i in 1: length(x)) { # but this doesn't work??
+}
+
+# operator precedence
+
+i <- 2
+
+1:i - 1 # means (1:i) -1, not 1:(i - 1)
+# (1:i) is recycled to mean C(1,1)
+
+1:(i - 1)
+
+
+# Generating vectors with seq() 
+
+seq(from=12, to=30, by=3)
+
+seq(from=1.1, to=2, length=10)
+
+# for(i in 1:length(x))
+
+# for(i in seq(x))
+  
+x <- c(5, 12, 13)
+
+# seq() gives correct evaluation of NULL
+
+seq(x)
+
+x <- NULL
+
+x
+
+seq(x)
+
+# Repeating Vector Contants with rep()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
