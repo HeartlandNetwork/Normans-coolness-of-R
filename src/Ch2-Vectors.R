@@ -225,9 +225,25 @@ rep(c(5, 12, 13), 3)
 
 rep(1:3, 2)
 
-rep(c(5, 12, 13), each=2)
+rep(c(5, 12, 13), each = 2)
 
-# Using all() and any()
+# Using all() and any() to report whether any or all arguments are TRUE
+
+x <- 1:10
+
+any(x > 8)
+
+any(x > 88)
+
+all(x > 8)
+
+all(x > 0)
+
+
+
+
+
+
 
 
 
