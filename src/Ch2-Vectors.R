@@ -210,12 +210,24 @@ seq(x)
 
 x <- NULL
 
-x
+
+?Syntax
 
 seq(x)
 
 # Repeating Vector Contants with rep()
 
+x <- rep(8,4)
+
+x
+
+rep(c(5, 12, 13), 3)
+
+rep(1:3, 2)
+
+rep(c(5, 12, 13), each=2)
+
+# Using all() and any()
 
 
 
