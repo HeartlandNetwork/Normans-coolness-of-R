@@ -6,50 +6,27 @@
 #                                                                    #
 #####################################################################
 
-# Dataset: LakeHuron - Annual Measurements of the level, in feet, 
-# of Lake Huron, 1875 - 1972."
-#
-
-LakeHuron
-
-# Convert to increasing or decreasing water levels represented by 1's and 0's
-
-LakeHuron_length = length(LakeHuron)
-
-ones_zeros <- function(data_values, data_length){
-  max_i = data_length - 1
-  for (i in max_i)
-    if (x[i+1] - x[i]) > 0
-      y[i] = 1
-    else
-      y[i] = 0
-  }
 
 
-     
+# In the function "findruns", x is a vector or 1s and 0s and 
+# k is the length of run to find
 
 
-
-
-
-
-
-lakelevel <- c(0,0,1,1,1,1,1,0,1,1)
-
-preda <- function(x,k) {
+findruns <- function(x, k){
+  
   n <- length(x)
-  k2 <- k
-  # the vector pred will contain our predicted values
-  pred <- vector(length = n - k)
-  for( i in 1:(n - k)) {
-      if( sum(x[i:(k - 1))]) >= k2) pred[i] <- 1
-      else pred[i] <- 0
+  runs <- NULL
+  
+  for(i in 1:(n - k + 1)){
+    
+    # need to determine whether all k values 
+    # (x[i], x[i + 1], ... x[i + k - 1]) are 1s
+    
+    if(all(x[1:(i + k - 1)] == 1)) runs <- c(runs, i)
   }
+  
+  return(runs)
 }
-
-
-
-
 
 
 
