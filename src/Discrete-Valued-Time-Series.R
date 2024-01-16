@@ -10,21 +10,39 @@
 # of Lake Huron, 1875 - 1972."
 #
 
-LakeHuron
+library(help = datasets)
 
+
+head(LakeHuron)
+
+my_vector = c(2,4,6,8)
+
+summary(LakeHuron)
+
+DataFrame = data.frame(LakeHuron)
+;.
 # Convert to increasing or decreasing water levels represented by 1's and 0's
 
-find_ones <- function(x){
-  for (i in 1:(length[x] - 1)]{
-    if (x[i+1] - x[i]) > 0
+find_ones <- function(x) { 
+  
+  j = length(x) <<<<<<<<<<<<<<<<<<<< issues here!!
+  
+  for (i in 1:j ) {
+    
+    if ((x[i + 1] - x[i]) > 0) {
+      
       y[i] = 1
-    else
-      y[i] = 0
+      
+    }
+    
+    else y[i] = 0
   }
-
+    return(y[i])
+  
 }
       
-}
+find_ones(LakeHuron)
+
 
 
 
