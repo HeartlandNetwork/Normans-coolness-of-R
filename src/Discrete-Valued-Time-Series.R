@@ -10,67 +10,40 @@
 # of Lake Huron, 1875 - 1972."
 #
 
-#library(help = datasets)
+# Pt 1: Creating discrete time series dataset from Lake Huron
 
+LakeHuron
 
-head(LakeHuron)
-
-summary(LakeHuron)
-
-# Convert to increasing or decreasing water levels represented by 1's and 0's
+length(LakeHuron)
 
 find_ones <- function(x) { 
   
   j <- length(x) 
   y <- NULL
   
-  print(1:j)
-  
-  print("before for...")
-  
-  for (i in 1:(j) ) {
-    
-  print(c(i,j))
-    
-  if ((x[i + 1] - x[i]) > 0) {
+  for (i in 1:(j - 1) ) {
       
-      #}
-    
-    #else y[i] = 0
+    if ((x[i + 1] - x[i]) > 0) {
+       y <- c(y, 1)
+    }
+       
+    else {
+      y <- c(y, 0)
+    }
   }
-    #return(y[i])
-  
-}
-      
-find_ones(LakeHuron)
-
-
-
-
-
-
-
-
-lakelevel <- c(0,0,1,1,1,1,1,0,1,1)
-
-preda <- function(x,k) {
-  n <- length(x)
-  k2 <- k
-  # the vector pred will contain our predicted values
-  pred <- vector(length = n - k)
-  for( i in 1:(n - k)) {
-      if( sum(x[i:(k - 1))]) >= k2) pred[i] <- 1
-      else pred[i] <- 0
-  }
+  return(y)
 }
 
+     
+LakeHuron_DTS <- find_ones(LakeHuron)
 
+LakeHuron
 
+length(LakeHuron)
 
+LakeHuron_DTS
 
+length(LakeHuron_DTS)
 
-
-
-
-
+# Pt 2: Creating discrete time series dataset from Lake Huron
 
