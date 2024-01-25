@@ -10,7 +10,7 @@
 # of Lake Huron, 1875 - 1972."
 #
 
-# Pt 1: Creating discrete-valued time series dataset from LakeHuron
+# Pt 1: Creating discrete time series dataset from LakeHuron
 # ------------------------------------------------------------------------------
 
 generate_ones_and_zeros <- function(x) { 
@@ -31,6 +31,7 @@ generate_ones_and_zeros <- function(x) {
   return(y)
 }
 
+     
 LakeHuron_DTS <- generate_ones_and_zeros(LakeHuron)
 
 LakeHuron
@@ -41,5 +42,5 @@ LakeHuron_DTS
 
 length(LakeHuron_DTS)
 
-# Pt 2: Predicting discrete-valued time series 
-# ------------------------------------------------------------------------------
+# Pt 2: Creating discrete time series dataset from Lake Huron
+
