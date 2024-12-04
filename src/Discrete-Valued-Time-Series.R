@@ -10,8 +10,16 @@
 # of Lake Huron, 1875 - 1972."
 #
 
-library(ggplot2) # To plot model error against the predictor k
+library(tidyverse) # To plot model error against the predictor k
 
+setwd("C:/Users/growell/normans-coolness-of-R/src")
+
+getwd()
+
+
+# The basic idea here is to take a training set, then ask now well various
+# values of k would have performed on that data. From that, we generate and
+# error rate for k = 2, 3, 4 ... 
 
 # Pt 1: Creating discrete-valued time series dataset from LakeHuron
 # ------------------------------------------------------------------------------
@@ -44,20 +52,64 @@ LakeHuron_DTS
 
 length(LakeHuron_DTS)
 
+# abbrev the dataset name
+
+Lk_Huron <- LakeHuron_DTS
+
 # Pt 2: Predicting discrete-valued time series - from Norman's book
 # -----------------------------------------------------------------------------
 # 
-# Purpose - to predict increase or decrease in lake levels based on past
-#   data. k is the number of of previous years to use to predict next year's
-#   lake level. We use the majority rule for k years, meaning k/2.
-#   To determine what is the best value of k, we need to 
-#   know the error associated with the model
-#   using that value of k. So we also need to determine error. 
-#   The code below uses the second approach in the book, which includes
-#   performance gains by using the sum of the previous computation rather
-#   than calculating the new sum from scratch. 
-#   There is a third method in the book which eliminates the subtraction
-#   in the for loop by using by using cumsum()...
+# Code for three models, developed successively
+
+preda <- function(x, k) {
+  n <- length(x)
+  k2 <- k/2
+  # the vector pred will contain our predicted values
+  pred <- vector(length=n-k)
+  
+  for (i in 1:(n - k)) {
+    if (sum(x[i:(i+(k-1))]) >= k2 ) { # <<<<<<<< using sum with vector
+	  pred[i] <- 1
+	}
+	else {
+	  pred[i] <- 0	
+    }	  
+  }
+  return(mean((abs(pred-x[(k+1):n])))) # <<<<<< using mean with vector
+}
+
+
+preda(Lk_Huron, 3)
+
+# k, preda
+# 1, 0.4375
+# 2, 0.4841
+# 3  0.5319
+# 4, 0.5268
+# 5, 0.5652
+# 6, 0.5604
+# 7, 0.5777
+# 8, 0.5280
+# 9, 0.5113
+
+# Create the tibble 
+k <- 1:4 
+results <- tibble( k = k, preda = preda(Lk_Huron, k) )
+
+print(results)
+
+
+# Next version deals with speed issues associated with for loop
+  
+  
+
+
+
+
+
+
+
+
 
 predb <- function(x, k) {
   n <- length(x)
